@@ -52,10 +52,12 @@ def new_enter():
     return jsonify(enter)
 
 
+@app.route('/enter/<int:id>', methods=["DELETE"])
 def delete_enter(id):
     for desc, pkenter in enumerate(enter):
         if pkenter.get('id') == id:
             del enter[desc]
+    return jsonify(enter)
 
 
 app.run(port=5000, host='localhost', debug=True)
